@@ -1,0 +1,10 @@
+scanInterval: 1000
+includeDirs:
+- examples
+fileTypes:
+- css
+- less
+ratio: 100
+excludeDirs:
+- build
+- dist

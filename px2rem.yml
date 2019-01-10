@@ -1,0 +1,12 @@
+scanInterval: 1000
+includeDirs:
+- examples
+fileTypes:
+- css
+- less
+excludeDirs:
+- examples/dirtest
+includeFiles:
+- examples/test1
+excludeFiles:
+- examples/test2
