@@ -118,27 +118,46 @@ class Convertor {
   };
 
   getConvertFiles = (dir) => {
-    fs.readdir(dir, 'utf8', (err, files) => {
-      if (!err) {
-        files.filter(f => (f.indexOf('.') > 0 && this.props.fileTypes.indexOf(f.substring(f.lastIndexOf('.') + 1)) > -1) || (fs.statSync(`${dir}/${f}`).isDirectory())).forEach((f) => {
-          if (fs.statSync(`${dir}/${f}`).isDirectory()) {
-            this.getConvertFiles(`${dir}/${f}`);
-          } else if (/\.css$/.test(f)) {
-            this.doConvertCSSFile(`${dir}/${f}`);
-          } else if (/\.less$/.test(f)) {
-            this.doConvertFile(`${dir}/${f}`);
-          } else {
-            this.doConvertFile(`${dir}/${f}`);
-          }
-        });
-      }
-    });
+    if (this.props.excludeDirs.indexOf(dir) === -1) {
+      fs.readdir(dir, 'utf8', (err, files) => {
+        if (!err) {
+          files.filter(f => (this.props.fileTypes === undefined || this.props.fileTypes.length === 0) || (f.indexOf('.') > 0 && this.props.fileTypes.indexOf(f.substring(f.lastIndexOf('.') + 1)) > -1) || (fs.statSync(`${dir}/${f}`).isDirectory())).forEach((f) => {
+            if (this.props.excludeFiles.indexOf(`${dir}/${f}`) === -1) {
+              if (fs.statSync(`${dir}/${f}`).isDirectory()) {
+                this.getConvertFiles(`${dir}/${f}`);
+              } else if (/\.css$/.test(f)) {
+                this.doConvertCSSFile(`${dir}/${f}`);
+              } else if (/\.less$/.test(f)) {
+                this.doConvertFile(`${dir}/${f}`);
+              } else {
+                this.doConvertFile(`${dir}/${f}`);
+              }
+            }
+          });
+        } else {
+          console.log(new Error(err.message));
+        }
+      });
+    }
   };
 
   convert = () => {
     if (this.props && this.props.includeDirs && this.props.fileTypes) {
       this.props.includeDirs.forEach((dir) => {
         this.getConvertFiles(dir);
+      });
+    }
+    if (this.props && this.props.includeFiles) {
+      this.props.includeFiles.forEach((file) => {
+        if (fs.existsSync(file)) {
+          if (/\.css$/.test(file)) {
+            this.doConvertCSSFile(file);
+          } else if (/\.less$/.test(file)) {
+            this.doConvertFile(file);
+          } else {
+            this.doConvertFile(file);
+          }
+        }
       });
     }
   };

@@ -1,4 +1,3 @@
-scanInterval: 1000
 includeDirs:
 - examples
 fileTypes:
