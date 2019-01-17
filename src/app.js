@@ -4,5 +4,5 @@ const con = new Convertor();
 try {
   con.convert();
 } catch (e) {
-  console(new Error(e).message);
+  console.log(new Error(e));
 }

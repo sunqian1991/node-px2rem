@@ -66,7 +66,7 @@ class Convertor {
 
     while (content.indexOf(':', colonIndex) > -1) {
       const fromIndex = content.indexOf(':', colonIndex);
-      const toIndex = (content.indexOf(';', fromIndex) === -1 || content.indexOf(';', colonIndex) < fromIndex) ? content.length : (content.indexOf('}', fromIndex) > -1 && content.indexOf(';', fromIndex) > content.indexOf('}', fromIndex) ? content.indexOf('}', fromIndex) : content.indexOf(';', fromIndex));
+      const toIndex = (content.indexOf(';', fromIndex) === -1 && content.indexOf('}', fromIndex) === -1) ? content.length : (content.indexOf('}', fromIndex) > -1 && (content.indexOf(';', fromIndex) === -1 || content.indexOf(';', fromIndex) > content.indexOf('}', fromIndex)) ? content.indexOf('}', fromIndex) : content.indexOf(';', fromIndex));
       let cont = content.substring(fromIndex + 1, toIndex);
       let index = cont.toLowerCase().indexOf('px');
       do {
@@ -118,11 +118,11 @@ class Convertor {
   };
 
   getConvertFiles = (dir) => {
-    if (this.props.excludeDirs.indexOf(dir) === -1) {
+    if (!this.props.excludeDirs || this.props.excludeDirs.indexOf(dir) === -1) {
       fs.readdir(dir, 'utf8', (err, files) => {
         if (!err) {
           files.filter(f => (this.props.fileTypes === undefined || this.props.fileTypes.length === 0) || (f.indexOf('.') > 0 && this.props.fileTypes.indexOf(f.substring(f.lastIndexOf('.') + 1)) > -1) || (fs.statSync(`${dir}/${f}`).isDirectory())).forEach((f) => {
-            if (this.props.excludeFiles.indexOf(`${dir}/${f}`) === -1) {
+            if (!this.props.excludeFiles || this.props.excludeFiles.indexOf(`${dir}/${f}`) === -1) {
               if (fs.statSync(`${dir}/${f}`).isDirectory()) {
                 this.getConvertFiles(`${dir}/${f}`);
               } else if (/\.css$/.test(f)) {
