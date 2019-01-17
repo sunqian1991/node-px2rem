@@ -1,16 +1,19 @@
 {
   "name": "px2rem-node-tool",
-  "description": "a tool which can convert px to rem.",
-  "version": "0.0.4",
+  "description": "a tool which can convert px to rem used in css or less files.",
+  "version": "0.1.1",
   "main": "./lib/app.js",
   "keywords": ["px2rem","convert px to rem","px to rem"],
   "homepage": "https://github.com/sunqian1991/node-px2rem",
+  "bin": {
+    "px2rem": "./bin/px2rem.js"
+  },
   "author": {
     "name" : "sunqian",
     "email" : "sunqian1991@gmail.com"
   },
   "bugs": {
-    "url":"https://github.com/sunqian1991/self-adapt-fontsize/issues",
+    "url":"https://github.com/sunqian1991/node-px2rem/issues/new",
     "email": "sunqian1991@gmail.com"
   },
   "repository": {

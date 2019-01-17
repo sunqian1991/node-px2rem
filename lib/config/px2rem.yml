@@ -1,10 +1,6 @@
 includeDirs:
-- examples
+- src
 fileTypes:
 - css
 - less
 ratio: 100
-excludeDirs:
-- build
-- dist
-excludeFiles:

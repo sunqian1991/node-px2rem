@@ -2,12 +2,13 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: [
-    './src/app.js',
-  ],
+  entry: {
+    app: './src/app.js',
+    Convertor: './src/Convertor.js',
+  },
   output: {
     path: path.resolve(__dirname, './lib'),
-    filename: 'app.js',
+    filename: '[name].js',
   },
   target: 'node',
   module: {
