@@ -1,7 +1,7 @@
 ## px转rem的node工具
 
 [![Build Status](https://travis-ci.com/sunqian1991/node-px2rem.svg?branch=master)](https://travis-ci.com/sunqian1991/node-px2rem.svg?branch=master)
-![](https://img.shields.io/badge/license-MIT-000000.svg)
+[![](https://img.shields.io/badge/license-MIT-000000.svg)](https://github.com/sunqian1991/node-px2rem/blob/master/LICENSE)
 [![NPM version](https://img.shields.io/npm/v/node-px2rem-converter.svg)](https://www.npmjs.com/package/node-px2rem-converter)
 [![codebeat badge](https://codebeat.co/badges/9df154c4-38b7-42b9-820e-ebfd2c60c416)](https://codebeat.co/projects/github-com-sunqian1991-node-px2rem-master)
 
