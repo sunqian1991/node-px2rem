@@ -1,8 +1,25 @@
-const Convertor = require('./Convertor');
+const Converter = require('./Converter');
 
-const con = new Convertor();
-try {
-  con.convert();
-} catch (e) {
-  console.log(new Error(e));
+class App {
+  constructor() {
+    this.con = new Converter();
+  }
+
+  convert = () => {
+    try {
+      this.con.convert();
+    } catch (e) {
+      console.log(new Error(e));
+    }
+  }
+
+  init = () => {
+    try {
+      this.con.initYamlFile();
+    } catch (e) {
+      console.log(new Error(e));
+    }
+  }
 }
+
+module.exports = App;

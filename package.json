@@ -1,32 +1,37 @@
 {
-  "name": "px2rem-node-tool",
+  "name": "node-px2rem-converter",
   "description": "a tool which can convert px to rem used in css or less files.",
-  "version": "0.1.1",
-  "main": "./lib/app.js",
-  "keywords": ["px2rem","convert px to rem","px to rem"],
+  "version": "0.1.5",
+  "main": "./lib/convert.js",
+  "keywords": [
+    "px2rem",
+    "convert px to rem",
+    "px to rem"
+  ],
   "homepage": "https://github.com/sunqian1991/node-px2rem",
   "bin": {
     "px2rem": "./bin/px2rem.js"
   },
   "author": {
-    "name" : "sunqian",
-    "email" : "sunqian1991@gmail.com"
+    "name": "sunqian",
+    "email": "sunqian1991@gmail.com"
   },
   "bugs": {
-    "url":"https://github.com/sunqian1991/node-px2rem/issues/new",
+    "url": "https://github.com/sunqian1991/node-px2rem/issues/new",
     "email": "sunqian1991@gmail.com"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/sunqian1991/node-px2rem.git"
+    "type": "git",
+    "url": "https://github.com/sunqian1991/node-px2rem.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./node_modules/.bin/babel-node ./src/app.js",
     "build": "webpack"
   },
-  "license": "GPL-3.0",
+  "license": "MIT",
   "dependencies": {
+    "commander": "2.19.0",
     "css": "2.2.4",
     "js-yaml": "3.12.1"
   },
@@ -44,6 +49,7 @@
     "eslint": "5.12.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.14.0",
+    "node-px2rem-converter": "0.0.2",
     "webpack": "4.28.1",
     "webpack-cli": "3.2.1"
   }

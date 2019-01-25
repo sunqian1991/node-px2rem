@@ -1,11 +1,6 @@
 includeDirs:
-- examples
+- src
 fileTypes:
 - css
 - less
-excludeDirs:
-- examples/dirtest
-includeFiles:
-- examples/test1
-excludeFiles:
-- examples/test2
+ratio: 100

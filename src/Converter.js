@@ -4,9 +4,11 @@ import css from 'css';
 import readline from 'readline';
 import os from 'os';
 
-class Convertor {
+const path = require('path');
+
+class Converter {
   constructor() {
-    const defaultProps = this.loadYamlFile('src/config/px2rem.yml').body;
+    const defaultProps = this.loadYamlFile(path.resolve('./node_modules/node-px2rem-converter/px2rem.yml')).body;
     this.props = Object.assign({}, defaultProps, this.getYamlProps());
   }
 
@@ -21,15 +23,21 @@ class Convertor {
 
   getYamlProps = () => {
     let props = {};
-    if (!fs.existsSync('px2rem.yml')) {
-      fs.copyFileSync('src/config/px2rem.yml', './px2rem.yml');
-    }
+    /* if (!fs.existsSync('px2rem.yml')) {
+      fs.copyFileSync('lib/config/px2rem.yml', './px2rem.yml');
+    } */
     const yamlProps = this.loadYamlFile('px2rem.yml');
     if (yamlProps.load) {
       props = Object.assign({}, yamlProps.body);
     }
     return props;
   };
+
+  initYamlFile = () => {
+    if (!fs.existsSync('px2rem.yml')) {
+      fs.copyFileSync(path.resolve('./node_modules/node-px2rem-converter/px2rem.yml'), './px2rem.yml');
+    }
+  }
 
   isNumber = num => ((/^\d+(\.\d+)?$/.test(num) || /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/.test(num)));
 
@@ -163,4 +171,4 @@ class Convertor {
   };
 }
 
-module.exports = Convertor;
+module.exports = Converter;

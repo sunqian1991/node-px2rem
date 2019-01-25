@@ -1,10 +1,12 @@
 const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
     app: './src/app.js',
-    Convertor: './src/Convertor.js',
+    Converter: './src/Converter.js',
+    convert: './src/convert.js',
+    init: './src/init.js',
   },
   output: {
     path: path.resolve(__dirname, './lib'),
@@ -34,12 +36,12 @@ module.exports = {
     ],
   },
   plugins: [
-    new CopyWebpackPlugin([
+    /* new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, './src/config'),
         to: path.resolve(__dirname, './lib/config'),
       },
-    ]),
+    ]), */
   ],
   optimization: {
     minimize: false,

@@ -1,3 +1,3 @@
-const Convertor = require('./lib/Convertor');
+const app = require('./lib/init.js');
 
-exports.convertor = new Convertor();
+console.log(app);
