@@ -116,7 +116,7 @@ class Converter {
       input,
     });
     rl.on('line', (line) => {
-      content = `${content}${content === '' ? '' : os.EOL}${line.toLowerCase().indexOf('px') > -1 ? this.calculateLine(line) : line}`;
+      content = `${content}${content === '' ? '' : (this.props.eol && ['\n', '\r\n'].indexOf(this.props.eol) > -1 ? this.props.eol : os.EOL)}${line.toLowerCase().indexOf('px') > -1 ? this.calculateLine(line) : line}`;
     });
     rl.on('close', () => {
       fs.writeFileSync(file, content, {

@@ -1,7 +1,7 @@
 {
   "name": "node-px2rem-converter",
   "description": "a tool which can convert px to rem used in css or less files.",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "main": "./lib/convert.js",
   "keywords": [
     "px2rem",
