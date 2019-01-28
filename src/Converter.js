@@ -98,11 +98,19 @@ class Converter {
     const stylesString = fs.readFileSync(file, 'utf-8');
     const styles = css.parse(stylesString);
     styles.stylesheet.rules = styles.stylesheet.rules.map((rule => (
-      Object.assign({}, rule, {
+      Object.assign({}, rule, rule.declarations ? {
         declarations: rule.declarations.map(style => (
           (style.value.indexOf('px') > -1) ? Object.assign({}, style, { value: this.calculateProp(style.value) }) : style
         )),
-      })
+      } : {}, rule.keyframes ? {
+        keyframes: rule.keyframes.map(keys => (
+          Object.assign({}, keys, {
+            declarations: keys.declarations.map(de => (
+              (de.value.indexOf('px') > -1) ? Object.assign({}, de, { value: this.calculateProp(de.value) }) : de
+            )),
+          })
+        )),
+      } : {})
     )));
     fs.writeFileSync(file, css.stringify(styles), {
       encoding: 'utf-8',
