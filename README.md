@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.com/sunqian1991/node-px2rem.svg?branch=master)](https://travis-ci.com/sunqian1991/node-px2rem.svg?branch=master)
 [![](https://img.shields.io/badge/license-MIT-000000.svg)](https://github.com/sunqian1991/node-px2rem/blob/master/LICENSE)
 [![NPM version](https://img.shields.io/npm/v/node-px2rem-converter.svg)](https://www.npmjs.com/package/node-px2rem-converter)
+[![](https://img.shields.io/npm/dt/node-px2rem-converter.svg)](https://www.npmjs.com/package/node-px2rem-converter)
 [![codebeat badge](https://codebeat.co/badges/9df154c4-38b7-42b9-820e-ebfd2c60c416)](https://codebeat.co/projects/github-com-sunqian1991-node-px2rem-master)
 
 这是一个基于nodejs的将样式文件中的`px`单位转换为`rem`单位的工具，通过项目目录下的命令行中输入指定的指令实现批量转换指定文件的`px`单位。

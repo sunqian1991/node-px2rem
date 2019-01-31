@@ -20,17 +20,12 @@ module.exports = {
         include: [path.resolve(__dirname, './src')],
         loader: 'babel-loader',
         options: {
-          plugins: [
-            ['transform-runtime', {
-              helpers: false,
-              polyfill: false,
-              regenerator: true,
-              moduleName: 'babel-runtime',
-            }],
-          ],
-          presets: ['es2015', 'stage-0'],
-          minified: false,
-          compact: true,
+          presets: [
+            ['env', {
+              targets: {
+                node: '5.0.0',
+              },
+            }]],
         },
       },
     ],
